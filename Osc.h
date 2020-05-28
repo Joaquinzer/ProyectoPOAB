@@ -9,12 +9,13 @@
 using namespace std;
 
 class Osc{
-public:
+protected:
   bool filtro;
   char Tipo;
   float cutoff;
   string wave;
   int amplitud;
+public:
   Osc(bool f, char t, float c, string w, int a);
   Osc();
   char GetTipo(){return Tipo;};
@@ -22,7 +23,7 @@ public:
   string GetWave(){return wave;};
   int GetAmp(){return amplitud;};
   void SetAmp(int aa);
-  void ImprimirFreqs(Notas &n);
+  virtual void ImprimirFreqs(Notas &n);
 };
 Osc::Osc(bool f, char t, float c, string w, int a){
   filtro = f;
