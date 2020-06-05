@@ -23,7 +23,7 @@ public:
   string GetWave(){return wave;};
   int GetAmp(){return amplitud;};
   void SetAmp(int aa);
-  virtual void ImprimirFreqs(Notas &n);
+  virtual void ImprimirFreqs(Notas &n) = 0;
 };
 Osc::Osc(bool f, char t, float c, string w, int a){
   filtro = f;
@@ -41,24 +41,6 @@ Osc::Osc(){
 }
 void Osc::SetAmp(int aa){
   amplitud = aa;
-}
-void Osc::ImprimirFreqs(Notas &n){
-  float f;
-  f = n.encontrarfreq();
-  if(filtro && (Tipo == 'L')){
-    if(cutoff < f){
-      cout << "No hay frecuencias" << endl;
-    }
-  }
-  else if (filtro && (Tipo == 'H')){
-    if(cutoff > f){
-      cout << "No hay frecuencias" << endl;
-    }
-  }
-  else{
-    cout << "Frecuencia en Hz:" << endl;
-    cout << f << endl;
-  }
 }
 
 class square : public Osc{
@@ -172,5 +154,29 @@ void saw::ImprimirFreqs(Notas &n){
   }
   cout << "" << endl;
 }
+class sine : public Osc{
+public:
+  sine(bool f, char t, float c, int a): Osc(f, t, c, "Sine", a){}
+  void ImprimirFreqs(Notas &n);
+};
+void sine::ImprimirFreqs(Notas &n){
+  float f;
+  f = n.encontrarfreq();
+  if(filtro && (Tipo == 'L')){
+    if(cutoff < f){
+      cout << "No hay frecuencias" << endl;
+    }
+  }
+  else if (filtro && (Tipo == 'H')){
+    if(cutoff > f){
+      cout << "No hay frecuencias" << endl;
+    }
+  }
+  else{
+    cout << "Frecuencia en Hz:" << endl;
+    cout << f << endl;
+  }
+}
+
 
 #endif
