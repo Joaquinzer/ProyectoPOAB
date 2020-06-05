@@ -34,7 +34,7 @@ int main(){
   cout << "tipo de onda? (sine, square, saw): ";
   cin >> w;
   if(w == "sine"){
-    o = new Osc(f, tf, co, w, 100);
+    o = new sine(f, tf, co, 100);
     o->ImprimirFreqs(n);
   }
   else if(w == "square"){
