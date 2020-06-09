@@ -166,10 +166,18 @@ void sine::ImprimirFreqs(Notas &n){
     if(cutoff < f){
       cout << "No hay frecuencias" << endl;
     }
+    else{
+      cout << "Frecuencia en Hz:" << endl;
+      cout << f << endl;
+    }
   }
   else if (filtro && (Tipo == 'H')){
     if(cutoff > f){
       cout << "No hay frecuencias" << endl;
+    }
+    else{
+      cout << "Frecuencia en Hz:" << endl;
+      cout << f << endl;
     }
   }
   else{
